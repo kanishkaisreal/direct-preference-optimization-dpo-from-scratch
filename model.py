@@ -19,8 +19,34 @@ def log_softmax(logits, axis=-1):
 
     return log_softmax
 
-# Step 2 - softmax (not yet solved)
-# TODO: implement
+# Step 2 - softmax
+def softmax(logits, axis=-1):
+    # TODO: Convert an array of logits into a probability distribution along a given axis
+    max_logits = np.max(logits, axis = axis, keepdims = True)
+
+    numerator =  np.exp(logits - max_logits)
+    denominator_sum = np.sum(numerator, axis = axis,  keepdims= True)
+
+    probabilities = numerator / denominator_sum
+
+    return probabilities
+
+
+
+
+
+
+
+
+    # max_logits = np.max(logits, axis = axis, keepdims = True)
+
+    # numerator =  np.exp(logits - max_logits)
+    # numerator_sum = np.sum(numerator, axis = axis,  keepdims= True)
+    # numerator_sum_log = np.log(numerator_sum)
+
+    # log_softmax = logits - max_logits - numerator_sum_log
+
+    # return log_softmax
 
 # Step 3 - gather_token_logprobs (not yet solved)
 # TODO: implement
